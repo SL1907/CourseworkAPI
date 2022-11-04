@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.Configure<CarGameDatabaseSettings>(builder.Configuration.GetSection("CarGameDatabase"));
 
 builder.Services.AddSingleton<PlayerService>();
+builder.Services.AddSingleton<LeaderboardService>();
 
 builder.Services.AddControllers()
     .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);

@@ -31,5 +31,13 @@ public class PlayerController : ControllerBase
 
         return player is null ? NotFound() : player;
     }
+    
+    
+    [HttpPost]
+    public async Task<IActionResult> Post(Player newPlayer)
+    {
+        await _playerService.CreateAsync(newPlayer);
 
+        return CreatedAtAction(nameof(Get), new { id = newPlayer.Id }, newPlayer);
+    }
 }
